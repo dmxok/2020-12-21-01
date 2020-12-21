@@ -1,0 +1,374 @@
+db.class2.renameCollection("class")
+show collections/tables
+use stu
+db.class.insert({"name":"tom"})
+
+db.collectidb.collection.find(query,field)
+db.class1.find({sex:"m"},{_id:0})
+{ "name" : "panda", "age" : 13, "sex" : "m" }
+{ "name" : "allen", "age" : 10, "sex" : "m" }
+{ "name" : "loro", "age" : 9, "sex" : "m" }
+
+db.class1.findOne({age:{$eq:13}},{_id:0}) =
+db.class1.findOne({age:{$lt:13}},{_id:0}) <
+db.class1.find({name:{$lt:"tom"}},{_id:0})<
+db.class1.find({name:{$gt:"nemo"}},{_id:0})>
+db.class1.find({age:{$gt:10,$lt:15}},{_id:0})
+$ne >>> !=90
+$gte >>> >=
+
+$in 
+>>> 
+db.class1.find({age:{$in:[11,12,13]}},{_id:0})
+{ "name" : "lili", "age" : 12, "sex" : "w" }
+{ "name" : "panda", "age" : 13, "sex" : "m" }
+{ "name" : "pan", "age" : 11, "sex" : "w" }
+
+$nin
+>>>
+db.class1.find({age:{$nin:[11,12,13]}},{_id:0})
+{ "name" : "nemo", "age" : 10, "sex" : "w" }
+{ "name" : "allen", "age" : 10, "sex" : "m" }
+{ "name" : "bob", "age" : 10, "sex" : "w" }
+{ "name" : "loro", "age" : 9, "sex" : "m" }
+> 
+$slice
+tiaoguodiyixiangxianshihoumianlaingxiang
+db.class2.find({},{_id:0,score:{$slice:[1,2]}})
+
+$exists through field exist 
+db.class1.find({sex:{$exists:false}},{_id:0})
+
+$mod  find1,3,5,7,9
+
+db.class1.find({age:{$mod:[2,1]}},{_id:0})
+{ "name" : "panda", "age" : 13, "sex" : "m" }
+{ "name" : "pan", "age" : 11, "sex" : "w" }
+{ "name" : "loro", "age" : 9, "sex" : "m" }
+
+$type
+db.class1.find({age:{$type:1}},{_id:0})
+
+
+
+db.collection.distinct()  /find field 
+db.class1.distinct("name")
+[ "lili", "panda", "pan", "nemo", "allen", "bob", "loro" ]
+
+
+db.class1.find().pretty()
+{
+	"_id" : ObjectId("5eccb9d3ed5125bc27bb4810"),
+	"name" : "lili",
+	"age" : 12,
+	"sex" : "w"
+}
+
+
+db.class1.find({},{_id:0}).limit(3) /3front
+{ "name" : "lili", "age" : 12, "sex" : "w" }
+{ "name" : "panda", "age" : 13, "sex" : "m" }
+{ "name" : "pan", "age" : 11, "sex" : "w" }
+
+
+ db.class1.find({},{_id:0}).skip(3)
+{ "name" : "nemo", "age" : 10, "sex" : "w" }
+{ "name" : "allen", "age" : 10, "sex" : "m" }
+{ "name" : "bob", "age" : 10, "sex" : "w" }
+{ "name" : "loro", "age" : 9, "sex" : "m" }
+
+
+count()
+db.class1.find({},{_id:0}).count() /result number
+7
+> db.class1.find({sex:'w'},{_id:0}).count()
+4
+> db.class1.find({sex:'m'},{_id:0}).count()
+3
+
+
+sort({field:1/-1})
+db.class1.find({},{_id:0}).sort({age:1})
+{ "name" : "loro", "age" : 9, "sex" : "m" }
+{ "name" : "nemo", "age" : 10, "sex" : "w" }
+{ "name" : "allen", "age" : 10, "sex" : "m" }
+{ "name" : "bob", "age" : 10, "sex" : "w" }
+{ "name" : "pan", "age" : 11, "sex" : "w" }
+{ "name" : "lili", "age" : 12, "sex" : "w" }
+{ "name" : "panda", "age" : 13, "sex" : "m" }
+
+age==age!!!
+db.class1.find({},{_id:0}).sort({age:1,name:-1})
+{ "name" : "loro", "age" : 9, "sex" : "m" }
+{ "name" : "nemo", "age" : 10, "sex" : "w" }
+{ "name" : "bob", "age" : 10, "sex" : "w" }
+{ "name" : "allen", "age" : 10, "sex" : "m" }
+{ "name" : "pan", "age" : 11, "sex" : "w" }
+{ "name" : "lili", "age" : 12, "sex" : "w" }
+{ "name" : "panda", "age" : 13, "sex" : "m" }
+> 
+ db.class1.find({},{_id:0}).sort({age:1,name:-1}).limit(3)
+{ "name" : "loro", "age" : 9, "sex" : "m" }
+{ "name" : "nemo", "age" : 10, "sex" : "w" }
+{ "name" : "bob", "age" : 10, "sex" : "w" }
+
+
+delete word
+mysql:delete from table where
+mongoodb:db.collection.remove(query,justone)
+
+remove()
+query >>>find
+
+justOne default=false if=true delete first one 
+
+db.class1.remove({sex:'w'},true)
+
+
+
+django
+http://djangobook.py3k.cn/2.0/ >>>handbook
+
+import django
+django.VERSION
+(1, 11, 8, 'final', 0)
+
+sudo pip3 install django==1.11.8
+
+mkdir django
+cd django
+django-admin startproject text1
+python3 manage.py runserver
+
+runserver
+startapp
+createsuperuser
+
+>>>ALLOWED_HOSTS = ['*']
+>>>./manage.py runserver 0.0.0.0:8000
+
+"""
+    创建函数,打印所有员工信息
+    创建函数,打印所有月薪大于2w的员工信息,
+    创建函数,在部门列表中查找编号最小的部门
+    创建函数,根据部门编号对部门列表升序排列
+"""
+
+# 员工列表(员工编号 部门编号 姓名 工资)
+dict_employees = {
+    1001: {"did": 9002, "name": "师父", "money": 60000},
+    1002: {"did": 9001, "name": "孙悟空", "money": 50000},
+    1003: {"did": 9002, "name": "猪八戒", "money": 20000},
+    1004: {"did": 9001, "name": "沙僧", "money": 30000},
+    1005: {"did": 9001, "name": "小白龙", "money": 15000},
+}
+
+# 部门列表
+list_departments = [
+    {"did": 9001, "title": "教学部"},
+    {"did": 9002, "title": "销售部"},
+    {"did": 9003, "title": "品保部"},
+]
+
+def print_single_employee(eid, emp):
+    print(f"{emp['name']}的员工编号是{eid},部门编号是{emp['did']},月薪{emp['money']}元.")
+
+# 1. 打印所有员工信息,
+# 格式：xx的员工编号是xx,部门编号是xx,月薪xx元.
+def print_all_employees():
+    for eid, emp in dict_employees.items():
+        print_single_employee(eid, emp)
+
+# 2. 打印所有月薪大于2w的员工信息,
+# 格式：xx的员工编号是xx,部门编号是xx,月薪xx元.
+def print_gt_2w_employees():
+    for eid, emp in dict_employees.items():
+        if emp['money'] > 20000:
+            print_single_employee(eid, emp)
+
+# 3. 在部门列表中查找编号最小的部门
+def get_min_by_did():
+    min_value = list_departments[0]
+    for i in range(1, len(list_departments)):
+        if min_value["did"] > list_departments[i]["did"]:
+            min_value = list_departments[i]
+    return min_value
+
+# 4. 根据部门编号对部门列表升序排列
+def order_by_did():
+    # (1)取
+    for r in range(len(list_departments) - 1):
+        # (2)比
+        for c in range(r + 1, len(list_departments)):
+            # (3) 发现更小
+            if list_departments[r]["did"] > list_departments[c]["did"]:
+                # (4) 交换
+                list_departments[r], list_departments[c] = list_departments[c], list_departments[r]
+
+
+# 测试
+print_all_employees()
+print_gt_2w_employees()
+result = get_min_by_did()
+print(result)
+
+order_by_did()
+print(list_departments)
+
+
+
+# --------------------------数据--------------------------
+# 商品列表
+# 字典更擅长定位单个元素
+# dict_commodity_infos = {
+#     1001:{"name": "屠龙刀", "price": 10000},
+#     1002:{"name": "倚天剑", "price": 10000},
+#     1003:{"name": "金箍棒", "price": 52100},
+#     1004:{"name": "口罩", "price": 20},
+#     1005:{"name": "酒精", "price": 30},
+# }
+# 列表更擅长按某种顺序定位元素
+# -------------全局变量----------------
+list_commodity_infos = [
+    {"cid": 1001, "name": "屠龙刀", "price": 10000},
+    {"cid": 1002, "name": "倚天剑", "price": 10000},
+    {"cid": 1003, "name": "金箍棒", "price": 52100},
+    {"cid": 1004, "name": "口罩", "price": 20},
+    {"cid": 1005, "name": "酒精", "price": 30},
+]
+
+# 订单列表
+list_orders = [
+    {"cid": 1001, "count": 1},
+    {"cid": 1002, "count": 3},
+    {"cid": 1005, "count": 2},
+]
+
+# -------------函数----------------
+
+def print_single_commodity(commodity):
+    print(f"编号:{commodity['cid']},商品名称:{commodity['name']},商品单价:{commodity['price']}")
+
+
+# 1.  定义函数,打印所有商品信息,格式：商品编号xx,商品名称xx,商品单价xx.
+def print_commodity_infos():
+    for commodity in list_commodity_infos:
+        # print(f"编号:{commodity['cid']},商品名称:{commodity['name']},商品单价:{commodity['price']}")
+        print_single_commodity(commodity)
+
+
+# 2.  定义函数,打印商品单价小于2万的商品信息
+def print_price_in_2w():
+    for commodity in list_commodity_infos:
+        if commodity["price"] < 20000:
+            # print(f"编号:{commodity['cid']}商品名称:{commodity['name']}商品单价:{commodity['price']}")
+            print_single_commodity(commodity)
+
+
+# 3.  定义函数,打印所有订单中的商品信息,
+#   格式：商品名称xx,商品单价:xx,数量xx.
+def print_order_infos():
+    for order in list_orders:  # 遍历所有订单
+        # order["cid"] --> 1001  -->
+        for commodity in list_commodity_infos:  # 遍历所有商品信息
+            # commodity["cid"] --> 1001
+            # 使用订单中的商品编号 在 商品信息中查找(商品)
+            if order["cid"] == commodity["cid"]:
+                print(f"商品名称{commodity['name']},商品单价:{commodity['price']},数量{order['count']}.")
+                break  # 跳出内层循环
+
+
+# 4. 定义函数,在商品列表中查找最贵的商品
+def get_max_commodity_by_price():
+    min_value = list_commodity_infos[0]
+    for i in range(1, len(list_commodity_infos)):
+        if min_value["did"] > list_commodity_infos[i]["did"]:
+            min_value = list_commodity_infos[i]
+    return min_value
+
+
+# 5. 定义函数,根据单价对商品列表升序排列
+def ascending_commodity_by_price():
+    for r in range(len(list_commodity_infos) - 1):
+        for c in range(r + 1, len(list_commodity_infos)):
+            if list_commodity_infos[r]["price"] > list_commodity_infos[c]["price"]:
+                list_commodity_infos[r], list_commodity_infos[c] = list_commodity_infos[c], list_commodity_infos[r]
+
+
+# 6. 定义函数,删除单价大于5000的商品
+def delete_commodity_gt_5000_by_price():
+    for i in range(len(list_commodity_infos) - 1, -1, -1):
+        if list_commodity_infos[i]["price"] > 5000:
+            del list_commodity_infos[i]
+
+# -------------入口--------------
+delete_commodity_gt_5000_by_price()
+print(list_commodity_infos)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
