@@ -306,7 +306,11 @@ delete_commodity_gt_5000_by_price()
 print(list_commodity_infos)
 
 
+<<<<<<< Updated upstream
 你忙你的
+=======
+哈哈哈很神奇
+>>>>>>> Stashed changes
 
 
 
